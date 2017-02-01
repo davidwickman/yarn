@@ -141,6 +141,9 @@ export async function executeLifecycleScript(
     // c - Run Command and then terminate
     shFlag = '/d /s /c';
 
+    // handle windows run scripts starting with a relative path
+    cmd = cmd.replace(/\//g, '\\');
+
     // handle quotes properly in windows environments - https://github.com/nodejs/node/issues/5060
     conf.windowsVerbatimArguments = true;
   }
